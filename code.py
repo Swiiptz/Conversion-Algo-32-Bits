@@ -56,7 +56,5 @@ def base10_2_entier(entier):
  b = ('0'*c)+str(b)
  return b
 
-def addition_mantisse(x):
-    c = str(base10_2_entier(entier))+ str(base10_2_decimal(decimal)
-    return c
-print(addition_mantisse(x))
+addition_mantisse = str(base10_2_entier(entier)) + str(base10_2_decimal(decimal))
+print(addition_mantisse)
