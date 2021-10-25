@@ -48,4 +48,15 @@ def base10_2_decimal(decimal):
    return x #conversion partie décimal base 10 en base 2
 
 def base10_2_entier(entier):
+ a = bin(entier)
+ long = len(a)
+ c = 8-long
+ b = a[2:long]
+ c = 8-len(b)
+ b = ('0'*c)+str(b)
+ return b
 
+def addition_mantisse(x):
+    c = str(base10_2_entier(entier))+ str(base10_2_decimal(decimal)
+    return c
+print(addition_mantisse(x))
