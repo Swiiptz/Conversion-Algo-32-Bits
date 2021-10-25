@@ -20,7 +20,6 @@ def decimal_base10(x):
 entier = int(entier_base10(x))
 decimal = float(decimal_base10(x))
 
-def base10_2_entier(entier):
 def base10_2_decimal(decimal):
    b = float(decimal)
    l = 0
@@ -47,4 +46,6 @@ def base10_2_decimal(decimal):
          listeA = listeA + ('0'*c)
    x = listeA
    return x #conversion partie décimal base 10 en base 2
+
+def base10_2_entier(entier):
 
