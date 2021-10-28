@@ -23,7 +23,7 @@ def mantisse(x):
         long = len(a)
         b = a[2:long]
         if int(b) == 0:
-            b = ''
+            b = '1'
             return b
         else:
             lenght = len(b)
@@ -71,3 +71,5 @@ def mantisse(x):
 
 def exposant(x):
     mantisse = mantisse(x)
+    loca_point = mantisse.find('.')
+
