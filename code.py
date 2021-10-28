@@ -63,8 +63,6 @@ def base10_2_decimal(decimal):
    return x #conversion partie décimal base 10 en base 2
 
 
-
-
 addition_mantisse = str(base10_2_entier(entier)) + '.' + str(base10_2_decimal(decimal))
 print(addition_mantisse)
 
