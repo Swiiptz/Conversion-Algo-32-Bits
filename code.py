@@ -1,13 +1,9 @@
 x = input('Rentrer le nombre en base 10: ')
 def entier_base10(x):  
-    if float(x) >= 1:
         a = str(x)
         y = a.find('.')
         partie_entière = a[0:y]
         return partie_entière
-    else:
-        nb_zero = '0'
-        return nb_zero #sortie str de l'entier avant la virgule
 
 def decimal_base10(x):  
         a = str(x)
@@ -20,6 +16,23 @@ def decimal_base10(x):
 entier = int(entier_base10(x))
 decimal = float(decimal_base10(x))
 
+def base10_2_entier(entier):
+ a = bin(entier)       
+ long = len(a)
+ b = a[2:long]
+ if int(b) == 0:
+    b = ''
+    return b
+ else:
+    lenght = len(b)
+    return b
+
+f_conv_entier = base10_2_entier(entier)
+if f_conv_entier == None:
+    lenght = 0
+else:
+    lenght = len(f_conv_entier)
+
 def base10_2_decimal(decimal):
    b = float(decimal)
    l = 0
@@ -27,34 +40,32 @@ def base10_2_decimal(decimal):
    z = str(1)
    a = 0
    listeA = str()
-   while l < 8:
+   long = 23 - lenght
+   while l < long:
       b = b*2
       if b > 1:
-         b = b-1
          listeA = listeA + z
+         b = b-1
          l = l+1
          a = a+1
-      else:
+         continue
+      if b < 1:
          listeA = listeA + y
          l = l+1
          a = a+1
+         continue
       if b==1:
          listeA = listeA + z
-         l = 8
+         l = long
          a = a+1
-         c = 8-len(listeA)
-         listeA = listeA + ('0'*c)
+         break
    x = listeA
    return x #conversion partie décimal base 10 en base 2
 
-def base10_2_entier(entier):
- a = bin(entier)
- long = len(a)
- c = 8-long
- b = a[2:long]
- c = 8-len(b)
- b = ('0'*c)+str(b)
- return b
 
-addition_mantisse = str(base10_2_entier(entier)) + str(base10_2_decimal(decimal))
+
+
+addition_mantisse = str(base10_2_entier(entier)) + '.' + str(base10_2_decimal(decimal))
 print(addition_mantisse)
+
+
