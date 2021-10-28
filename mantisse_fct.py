@@ -23,7 +23,7 @@ def mantisse(x):
         long = len(a)
         b = a[2:long]
         if int(b) == 0:
-            b = '0'
+            b = ''
             return b
         else:
             lenght = len(b)
