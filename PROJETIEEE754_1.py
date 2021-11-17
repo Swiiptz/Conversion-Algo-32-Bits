@@ -1,17 +1,18 @@
+#code développé par Quentin, Cédric et Milan (cf : équipe HMD) // Commentaire Milan
 
-def signe(nb_decimal): #fonction pour obtenir le signe
+def signe(nb_decimal): #fonction pour obtenir le signe //PAR QUENTIN
     if nb_decimal<0: #regarde si le nombre est inférieur à 0
         return 1 #signe en binaire
     return 0
 
-def puissance_de_deux(nb_decimal): #fonction puissance 2
+def puissance_de_deux(nb_decimal): #fonction puissance 2 //PAR QUENTIN
     if nb_decimal == 0: #regarde si le nombre est égal à 0
         return -127 #ok
     for i in range(-128,128): #pour i compris entre -128 et 128
         if 2**(i-1) <= nb_decimal < 2**i: #vérifie l'exposant
             return i-1 #return l'exposant
 
-def base10_2_entier(nb_decimal): 
+def base10_2_entier(nb_decimal): # /PAR MILAN
     s = ""
     if nb_decimal==0: #si le nombre estégal à 0
         return s #retourner "rien"
@@ -26,19 +27,19 @@ def base10_2_entier(nb_decimal):
         i -= 1
     return s
 
-def calibre_gauche(s,nb_decimal): #fonction pour remplir avec des 0 à gauche
+def calibre_gauche(s,nb_decimal): #fonction pour remplir avec des 0 à gauche //PAR MILAN
     assert len(s)<=nb_decimal #si la taille de s n'est pas inférieur/égal au nombre décimal
     while len(s) < nb_decimal: #tant que la taille de la chaine s est inférieur au nombre décimal
         s = "0" + s #on a s égal 0
     return s
 
-def calibre_droite(s,nb_decimal): #fonction pour remplir avec des 0 à droite
+def calibre_droite(s,nb_decimal): #fonction pour remplir avec des 0 à droite //PAR MILAN
     assert len(s)<=nb_decimal #si la taille de s n'est pas inférieur/égal au nombre décimal
     while len(s) < nb_decimal: #tant que la taille de la chaine s est inférieur au nombre décimal
         s += "0" #on a s égal 0
     return s
 
-def base10_to_2_decimal(nb_decimal,m): #fonction de conversion
+def base10_to_2_decimal(nb_decimal,m): #fonction de conversion #PAR MILAN
     assert 0<=nb_decimal<1 
     s = ""
     i = -1
@@ -53,8 +54,8 @@ def base10_to_2_decimal(nb_decimal,m): #fonction de conversion
                 m += 1 #m prend la valeur 1
         i -= 1 
     return s
-
-def base2_16(nb_decimal): #fonction traduction en hexadecimal
+ 
+def base2_16(nb_decimal): #fonction traduction en hexadecimal // PAR CEDRIC
     h = [nb_decimal[i*4:i*4+4] for i in range(0,8)] #h prend la valeur de type 
     c = "0123456789ABCDEF" #valeur chaine hexadécimal
     r = ""
@@ -66,7 +67,7 @@ def base2_16(nb_decimal): #fonction traduction en hexadecimal
         r += c[s]  #r coresspond à la valeur de la chaine c extraites avec l'id de s
     return r
 
-def translate_127(nb_decimal,s="+"): #pas besoin d'expliquer la fonction car juste un clacul simple
+def translate_127(nb_decimal,s="+"): #pas besoin d'expliquer la fonction car juste un clacul simple // PAR QUENTIN
     if s == "-":
         r = nb_decimal-127
     else:
@@ -122,4 +123,5 @@ while True:
         presentation_resultat_base_2(signe_s+exp_s+mantisse)
         print("[R] héxadécimal :", base2_16(signe_s+exp_s+mantisse))
     print()
+
 #fin :D Cédric, Quentin, Milan
