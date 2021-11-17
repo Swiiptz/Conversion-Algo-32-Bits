@@ -32,7 +32,7 @@ def entier_base10(nb):
 # -------------------------------------------------------------------
 # partie décimal
 def decimal_base10(nb):
-    décimal = str
+    décimal = str #test
     nb = float(nb)
     ent_nb = int(nb)
     float_nb = float(nb)
@@ -45,7 +45,7 @@ def decimal_base10(nb):
         décimal = nb_str[loca_point+1:nb_long]
         décimal = "0."+ str(décimal)
     return décimal
-#print(decimal_base10(nb)) VALIDE
+#print(decimal_base10(nb)) VALIDE#test
 
 # -------------------------------------------------------------------
 entier = int(entier_base10(nb))
