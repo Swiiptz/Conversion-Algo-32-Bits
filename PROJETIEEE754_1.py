@@ -1,18 +1,42 @@
 #code développé par Quentin, Cédric et Milan (cf : équipe HMD) // Commentaire Milan
 
-def signe(nb_decimal): #fonction pour obtenir le signe //PAR QUENTIN
+def signe(nb_decimal:float)->int: #fonction pour obtenir le signe //PAR QUENTIN
+    """
+    Fonction pour determiner le signe
+
+    entrée
+        nb_decimal float nombre qui doit être traduit avec la norme IEE754
+    sortie
+        valeur numérique int retourne le signe en binaire 1 ou 0
+    """
     if nb_decimal<0: #regarde si le nombre est inférieur à 0
         return 1 #signe en binaire
     return 0
 
-def puissance_de_deux(nb_decimal): #fonction puissance 2 //PAR QUENTIN
+def puissance_de_deux(nb_decimal:float)->int: #fonction puissance 2 //PAR QUENTIN
+    """
+    Fonction puissance de deux
+
+    entrée 
+        nb_decimal float nombre traduit avec la norme IEE754
+    sortie
+        valeur numérique int retourne l'exposant
+    """
     if nb_decimal == 0: #regarde si le nombre est égal à 0
         return -127 #ok
     for i in range(-128,128): #pour i compris entre -128 et 128
         if 2**(i-1) <= nb_decimal < 2**i: #vérifie l'exposant
             return i-1 #return l'exposant
 
-def base10_2_entier(nb_decimal): # /PAR MILAN
+def base10_2_entier(nb_decimal:float)->str: # /PAR MILAN
+    """
+    Fonction de conversion en binaire de la partie entière
+
+    entrée
+        nb_decimal float nombre traduit avec la norme IEE754
+    sortie
+        s str partie entière convertie en binaire
+    """
     s = ""
     if nb_decimal==0: #si le nombre estégal à 0
         return s #retourner "rien"
@@ -27,19 +51,46 @@ def base10_2_entier(nb_decimal): # /PAR MILAN
         i -= 1
     return s
 
-def calibre_gauche(s,nb_decimal): #fonction pour remplir avec des 0 à gauche //PAR MILAN
+def calibre_gauche(s:str,nb_decimal:float)->str: #fonction pour remplir avec des 0 à gauche //PAR MILAN
+    """
+    Calibre gauche
+
+    entrée
+        s str chaine à calibrer
+        nb_decimal float nombre à traduire avec la norme IEE754
+    sortie 
+        s str calibre avec des 0
+    """
     assert len(s)<=nb_decimal #si la taille de s n'est pas inférieur/égal au nombre décimal
     while len(s) < nb_decimal: #tant que la taille de la chaine s est inférieur au nombre décimal
         s = "0" + s #on a s égal 0
     return s
 
-def calibre_droite(s,nb_decimal): #fonction pour remplir avec des 0 à droite //PAR MILAN
+def calibre_droite(s:str,nb_decimal:float)->str: #fonction pour remplir avec des 0 à droite //PAR MILAN
+    """
+    Calibre droit
+
+    entrée
+        s str chaine à calibrer
+        nb_decimal float nombre à traduire avec la norme IEE754
+    sortie 
+        s str calibre avec des 0
+    """
     assert len(s)<=nb_decimal #si la taille de s n'est pas inférieur/égal au nombre décimal
     while len(s) < nb_decimal: #tant que la taille de la chaine s est inférieur au nombre décimal
         s += "0" #on a s égal 0
     return s
 
-def base10_to_2_decimal(nb_decimal,m): #fonction de conversion #PAR MILAN
+def base10_to_2_decimal(nb_decimal:float,m:int)->str: #fonction de conversion #PAR MILAN
+    """
+    Fonction conversion partie decimal en binaire
+    
+    entrée
+        nb_decimal float nombre à traduire avec la norme IEE754
+        m int permet d'avoir la taille de la chaine
+    sortie
+        s str chainee traduite en binaire
+    """
     assert 0<=nb_decimal<1 
     s = ""
     i = -1
@@ -55,7 +106,15 @@ def base10_to_2_decimal(nb_decimal,m): #fonction de conversion #PAR MILAN
         i -= 1 
     return s
  
-def base2_16(nb_decimal): #fonction traduction en hexadecimal // PAR CEDRIC
+def base2_16(nb_decimal:float)->str: #fonction traduction en hexadecimal // PAR CEDRIC
+    """
+    Fonction conversion hexadécimale
+
+    entrée
+        nb_decimal float nombre à traduire avec la norme IEE754
+    sortie
+        r str conversion en hexadecimal du nombre
+    """
     h = [nb_decimal[i*4:i*4+4] for i in range(0,8)] #h prend la valeur de type 
     c = "0123456789ABCDEF" #valeur chaine hexadécimal
     r = ""
@@ -67,7 +126,16 @@ def base2_16(nb_decimal): #fonction traduction en hexadecimal // PAR CEDRIC
         r += c[s]  #r coresspond à la valeur de la chaine c extraites avec l'id de s
     return r
 
-def translate_127(nb_decimal,s="+"): #pas besoin d'expliquer la fonction car juste un clacul simple // PAR QUENTIN
+def translate_127(nb_decimal:float,s:str="+")->float: #pas besoin d'expliquer la fonction car juste un clacul simple // PAR QUENTIN
+    """
+    fonction translate_127
+
+    entrée
+        nb_decimal float nombre à traduire avec la norme IEE754
+        s str signe 
+    sortie
+        r float exposant
+    """
     if s == "-":
         r = nb_decimal-127
     else:
@@ -75,16 +143,36 @@ def translate_127(nb_decimal,s="+"): #pas besoin d'expliquer la fonction car jus
     assert 0 <= r <= 255
     return r
 
-def donner_apres_virgule(nb_decimal):
+def donner_apres_virgule(nb_decimal:float)->float:
+    """
+    Fonction donner_apres_virgule
+    
+    entrée
+        nb_decimal float nombre à traduire avec la norme IEE754
+    sortie
+        valeur numérique float modulo de nb_decimal
+    """
     return nb_decimal%1 #nombre decimal modulo de 1
 
-def donner_avant_virgule(nb_decimal):
+def donner_avant_virgule(nb_decimal:float)->float:
+    """
+    Fonction donner_avant_virgule
+    
+    entrée
+        nb_decimal float nombre à traduire avec la norme IEE754
+    sortie
+        valeur numérique float modulo de nb_decimal
+    """
     return (nb_decimal-nb_decimal%1) #nombre decimal moins nombre décimal modulo de 1
 
 def presentation_resultat_base_2(s): #fonction présentation fonction
     print("[R] résultat :", s[0]+" "+s[1:9]+" "+s[9:])
-    
-while True:
+
+def main():   
+ """ 
+ Fonction d'affichage du résultat.
+ """
+ while True:
     
     # question
     nb_decimal = float(input("Entrez le nombre décimal à convertir en norme IEEE 754? "))
@@ -102,7 +190,7 @@ while True:
     # mantisse
     if exp_s == "00000000":
         print("[I] notation underflow")
-        print("[R] non codé : on prend 0")
+        print("[R] non codé : on prend 0")
         mantisse = calibre_droite(base10_2_entier(0),23)
         presentation_resultat_base_2(signe_s+exp_s+mantisse)
         print("[R] héxadécimal :", base2_16(signe_s+exp_s+mantisse))
@@ -123,5 +211,5 @@ while True:
         presentation_resultat_base_2(signe_s+exp_s+mantisse)
         print("[R] héxadécimal :", base2_16(signe_s+exp_s+mantisse))
     print()
-
+main()
 #fin :D Cédric, Quentin, Milan
